@@ -26,7 +26,9 @@ Please enter the pet id for adopter information. (ex, 1, 2 ......)
 
 
 <hr>
-
+<p>
+    <a href="staff.php">Return to the Staff Page</a>
+</p>
 <p>
 <a href="adopters.txt" >Contents</a>
 of this page.
