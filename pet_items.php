@@ -29,7 +29,7 @@ $type_id = mysqli_real_escape_string($conn, $type_id);
 $query = "SELECT item_id, price, stock, description
 FROM items
 WHERE type_id = ";
-$query = $query."'".$type_id."'";
+$query = $query."".$type_id."";
 
 ?>
 
@@ -53,7 +53,7 @@ print "<pre>";
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
   {
     print "\n";
-    print "$row[firstName]  $row[lastName]  $row[description]";
+    print "$row[item_id]  $row[price]  $row[stock]  $row[description]";
   }
 print "</pre>";
 
