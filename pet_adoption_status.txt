@@ -18,7 +18,7 @@ Please enter the check id for further information. (ex, 1, 2 ......)
 
 <form action="pet_adoption_status.php" method="POST">
 
-<input type="text" name="check_id"> <br>
+<input type="number" name="check_id"> <br>
 <input type="submit" value="submit">
 <input type="reset" value="erase">
 </form>
@@ -26,6 +26,9 @@ Please enter the check id for further information. (ex, 1, 2 ......)
 
 
 <hr>
+<p>
+    <a href="staff.php">Return to the Staff Page</a>
+</p>
 
 <p>
 <a href="pet_adoption_status.txt" >Contents</a>
