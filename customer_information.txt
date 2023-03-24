@@ -18,7 +18,7 @@ Please enter the customer number for further information. (ex, 1, 2 ......)
 
 <form action="customer_information.php" method="POST">
 
-<input type="text" name="customer_num"> <br>
+<input type="number" name="customer_num"> <br>
 <input type="submit" value="submit">
 <input type="reset" value="erase">
 </form>
@@ -26,7 +26,9 @@ Please enter the customer number for further information. (ex, 1, 2 ......)
 
 
 <hr>
-
+<p>
+  <a href="main.php">Return to the Staff Page</a>
+</p>
 <p>
 <a href="staff_information.txt" >Contents</a>
 of this page.
