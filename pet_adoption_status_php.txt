@@ -29,7 +29,7 @@ $check_id = mysqli_real_escape_string($conn, $check_id);
 $query = "SELECT check_id, neutering, vaccine, staff_id
 FROM adoption_status
 WHERE check_id = ";
-$query = $query."'".$check_id."'";
+$query = $query."".$check_id."";
 
 ?>
 
@@ -53,7 +53,7 @@ print "<pre>";
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
   {
     print "\n";
-    print "$row[firstName]  $row[lastName] $row[city]";
+    print "$row[check_id]  $row[neutering] $row[vaccine] $row[staff_id]";
   }
 print "</pre>";
 
@@ -65,7 +65,11 @@ mysqli_close($conn);
 
 <p>
 <hr>
-
+<p>
+<a href="pet_adoption_status.html" >Return </a>
+back to the html page before.
+ 
+<hr>
 <p>
 <a href="pet_adoption_status_php.txt" >Contents</a>
 of the PHP program that created this page. 	 
