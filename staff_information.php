@@ -29,7 +29,7 @@ $staff_id = mysqli_real_escape_string($conn, $staff_id);
 $query = "SELECT staff_id, fname, lname, phone, age, address
 FROM staffs
 WHERE staff_id = ";
-$query = $query."'".$staff_id."'";
+$query = $query."".$staff_id."";
 
 ?>
 
@@ -53,7 +53,7 @@ print "<pre>";
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
   {
     print "\n";
-    print "$row[firstName]  $row[lastName]  $row[description]";
+    print "$row[staff_id]  $row[fname]  $row[lname]  $row[phone]  $row[age]  $row[address]";
   }
 print "</pre>";
 
