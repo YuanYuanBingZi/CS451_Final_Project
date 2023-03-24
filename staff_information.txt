@@ -1,0 +1,35 @@
+<html>
+<head>
+       <title>Staff Information</title>
+</head>
+
+<body bgcolor="white">
+
+<h3>Pet Store: Staff Information</h3>
+
+
+
+<hr>
+
+<p>
+Please enter the staff id for further information. (ex, 101, 102 ......)
+
+<p>
+
+<form action="staff_information.php" method="POST">
+
+<input type="text" name="staff_id"> <br>
+<input type="submit" value="submit">
+<input type="reset" value="erase">
+</form>
+
+
+
+<hr>
+
+<p>
+<a href="staff_information.txt" >Contents</a>
+of this page.
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.0.24a-log
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema petstore
+--
+
+CREATE DATABASE IF NOT EXISTS petstore;
+USE petstore;
+
+--
+-- Definition of table `petstore`.`staffs`
+--
+
+DROP TABLE IF EXISTS `petstore`.`staffs`;
+CREATE TABLE  `petstore`.`staffs` (
+  `staff_id` bigint(20) NOT NULL,
+  `fname` char(15) default NULL,
+  `lname` char(15) default NULL,
+  `age` smallint(6) default 0,
+  `address` char(20) default NULL,
+  `phone` char(18) default NULL,
+  PRIMARY KEY  (`staff_id`),
+  UNIQUE KEY `staff_id` (`staff_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `petstore`.`staffs`
+--
+
+/*!40000 ALTER TABLE `staffs` DISABLE KEYS */;
+LOCK TABLES `staffs` WRITE;
+INSERT INTO `petstore`.`staffs` VALUES  
+ (101,'Ludwig','Pauli', 25,'213 Erstwild Court','408-789-8075'),
+ (102,'Carole','Sadler', 34,'785 Geary St','415-822-1289'),
+ (103,'Philip','Currie',56,'654 Poplar','415-328-4543'),
+ (104,'Anthony','Higgins',19,'East Shopping Cntr.','415-368-1100'),
+ (105,'Raymond','Vector',22,'1899 La Loma Drive','415-776-3249'),
+ (106,'George','Watson',30,'1143 Carver Place','415-389-8789'),
+ (107,'Charles','Ream',35,'41 Jordan Avenue','415-356-9876'),
+ (108,'Donald','Quinn',40,'587 Alvarado','415-544-8729'),
+ (109,'Jane','Miller',41,'7345 Ross Blvd.','408-723-8789'),
+ (110,'Roy','Jaeger',35,'520 Topaz Way','415-743-3611');
+ 
+ 
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `staffs` ENABLE KEYS */;
+
+--
+-- Definition of table `petstore`.`customers`
+--
+
+DROP TABLE IF EXISTS `petstore`.`customers`;
+CREATE TABLE  `petstore`. `customers`(
+  `customer_num` bigint(20) NOT NULL,
+  `fname` char(15) default NULL,
+  `lname` char(15) default NULL,
+  `address` char(20) default NULL,
+  `phone` char(18) default NULL,
+  PRIMARY KEY  (`customer_num`),
+  UNIQUE KEY `customer_num` (`customer_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `petstore`.`staffs`
+--
+
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+LOCK TABLES `customers` WRITE;
+INSERT INTO `petstore`.`customers` VALUES  
+ (1,'Frances','Keyes','3199 Sterling Court','408-277-7245'),
+ (2,'Margaret','Lawson','234 Wyandotte Way','415-887-7235'),
+ (3,'Lana','Beatty','654 Oak Grove','415-356-9982'),
+ (4,'Frank','Albertson','947 Waverly Place','415-886-6677'),
+ (5,'Alfred','Grant','776 Gary Avenue','415-356-1123'),
+ (6,'Jean','Parmelee','1104 Spinosa Drive','415-534-8822'),
+ (7,'Arnold','Sipes','850 Lytton Court','415-245-4578'),
+ (8,'Dick','Baxter','5427 College','415-655-0011'),
+ (9,'Bob','Shorter','2405 Kings Highway','609-663-6079'),
+ (10,'Fred','Jewell','6627 N. 17th Way','602-265-8754'),
+ (11,'Jason','Wallack','350 W. 23rd Street','302-366-7511'),
+ (12,'Cathy','O\'Brian','543 Nassau Street','609-342-0054'),
+ (13,'Marvin','Hanlon','10100 Bay Meadows Ro','904-823-4239'),
+ (14,'Chris','Putnum','4715 S.E. Adams Blvd','918-355-2074'),
+ (15,'James','Henry','1450 Commonwealth Av','617-232-4159'),
+ (16,'Eileen','Neelie','2539 South Utica Str','303-936-7731'),
+ (17,'Kim','Satifer','12222 Gregory Street','312-944-5691'),
+ (18,'Frank','Lessor','1817 N. Thomas Road','602-533-1817');
+ 
+ 
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+
+--
+-- Definition of table `petstore`.`adoption_status`
+--
+
+DROP TABLE IF EXISTS `petstore`.`adoption_status`;
+CREATE TABLE  `petstore`.`adoption_status` (
+  `check_id` bigint(20) NOT NULL,
+  `neutering` datetime NOT NULL,
+  `vaccine` datetime NOT NULL,
+  `staff_id` bigint(20) NOT NULL, 
+  PRIMARY KEY  (`check_id`),
+  KEY `FK_cust_calls_1` (`staff_id`),
+  CONSTRAINT `FK_cust_calls_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs` (`staff_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `petstore`.`adoption_status`
+--
+
+/*!40000 ALTER TABLE `adoption_status` DISABLE KEYS */;
+LOCK TABLES `adoption_status` WRITE;
+INSERT INTO `petstore`.`adoption_status` VALUES  
+ (01,'2023-01-01','2022-09-09','104'),
+ (02,'2023-01-02','2022-10-01','104'),
+ (03,'2022-03-04','2022-01-01','106'),
+ (04,'2020-07-10','2020-04-01','105'),
+ (05,'2020-05-04','2020-02-01','101'),
+ (06,'2020-03-05','2019-12-12','102'),
+ (07,'2020-01-01','2019-10-22','103'),
+ (08,'2021-02-20','2020-11-11','103'),
+ (09,'2021-06-18','2021-02-05','102'),
+ (10,'2021-07-24','2021-04-20','104'),
+ (11,'2020-03-25','2020-01-01','104'),
+ (12,'2020-07-02','2020-05-02','104');
+ 
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `adoption_status` ENABLE KEYS */;
+
+--
+-- Definition of table `petstore`.`pet_type`
+--
+
+DROP TABLE IF EXISTS `petstore`.`pet_type`;
+CREATE TABLE  `petstore`.`pet_type` (
+  `type_id` bigint(20) NOT NULL,
+  `type` char(30) NOT NULL,
+  PRIMARY KEY  (`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `petstore`.`pet_type`
+--
+
+/*!40000 ALTER TABLE `pet_type` DISABLE KEYS */;
+LOCK TABLES `pet_type` WRITE;
+INSERT INTO `petstore`.`pet_type` VALUES  
+ (01,'cat'),
+ (02,'dog'),
+ (03,'mouse'),
+ (04,'squirrel'),
+ (05,'rabit'),
+ (06,'duck'),
+ (07,'pig'),
+ (08,'fish'),
+ (09,'bird'),
+ (10,'chicken');
+
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `pet_type` ENABLE KEYS */;
+
+--
+-- Definition of table `petstore`.`pets`
+--
+
+DROP TABLE IF EXISTS `petstore`.`pets`;
+CREATE TABLE  `petstore`.`pets` (
+  `pet_id` bigint(20) NOT NULL,
+  `type_id` bigint(20) NOT NULL,
+  `pet_name` char(15) default NULL,
+  `age` smallint(6) default 0,
+  `check_id` bigint(20) NOT NULL,
+  PRIMARY KEY  (`pet_id`),
+  KEY `FK_pet_information_1` (`type_id`),
+  KEY `FK_pet_information_2` (`check_id`),
+  CONSTRAINT `FK_pet_information_2` FOREIGN KEY (`check_id`) REFERENCES `adoption_status` (`check_id`),
+  CONSTRAINT `FK_pet_information_1` FOREIGN KEY (`type_id`) REFERENCES `pet_type` (`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `petstore`.`pets`
+--
+
+/*!40000 ALTER TABLE `pets` DISABLE KEYS */;
+LOCK TABLES `pets` WRITE;
+INSERT INTO `petstore`.`pets` VALUES  
+ (1001,'1', 'nono',1,01),
+ (1002,'1','bobo', 1,02),
+ (1003,'1','toto', 2,03),
+ (1004,'1','lulu', 3,04),
+ (1005,'1','lucky',5,05),
+ (1006,'1','mimi',5,06),
+ (1007,'2','lucy',6,07),
+ (1008,'2','max', 3,08),
+ (1009,'2','cooper',3,09),
+ (1010,'2','charlie',3,10);
+
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `pets` ENABLE KEYS */;
+
+--
+-- Definition of table `petstore`.`pets`
+--
+
+DROP TABLE IF EXISTS `petstore`.`adopters`;
+CREATE TABLE  `petstore`.`adopters` (
+  `adopt_date` datetime NOT NULL,
+  `payment` float NOT NULL,
+  `customer_num` bigint(20) NOT NULL,
+  `pet_id` bigint(20) NOT NULL,
+  KEY `FK_pet_adoption_1` (`customer_num`),
+  KEY `FK_pet_adoption_2` (`pet_id`),
+  CONSTRAINT `FK_pet_adoption_2` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`pet_id`),
+  CONSTRAINT `FK_pet_adoption_1` FOREIGN KEY (`customer_num`) REFERENCES `customers` (`customer_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `petstore`.`pets`
+--
+
+/*!40000 ALTER TABLE `adopters` DISABLE KEYS */;
+LOCK TABLES `adopters` WRITE;
+INSERT INTO `petstore`.`adopters` VALUES  
+ ('2023-02-02',85,2,1),
+ ('2023-03-04',85,1,2),
+ ('2022-05-01',85,5,3),
+ ('2020-10-01',85,12,4),
+ ('2020-06-18',85,11,5),
+ ('2020-02-02',85,10,6),
+ ('2021-04-03',120,9,7),
+ ('2021-09-09',120,8,8),
+ ('2020-05-25',120,3,9),
+ ('2020-08-07',120,4,10);
+
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `adopters` ENABLE KEYS */;
+
+--
+-- Definition of table `petstore`.`items`
+--
+
+DROP TABLE IF EXISTS `petstore`.`items`;
+CREATE TABLE  `petstore`.`items` (
+  `item_id` bigint(20) NOT NULL,
+  `price` float NOT NULL,
+  `stock` bigint(20) NOT NULL,
+  `description` char(100) default NULL,
+  `type_id` bigint(20) NOT NULL,
+  PRIMARY KEY  (`item_id`),
+  KEY `FK_pet_item` (`type_id`),
+  CONSTRAINT `FK_pet_item` FOREIGN KEY (`type_id`) REFERENCES `pet_type` (`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*!40000 ALTER TABLE `items` DISABLE KEYS */;
+LOCK TABLES `items` WRITE;
+INSERT INTO `petstore`.`items` VALUES  
+ ('10001',19.7,20,'Tiki Cat King Kamehameha Grill Variety Pack', 1),
+ ('10002',29.99,10,'ORIJEN Original Grain-Free Dry Cat Food', 1),
+ ('10003',6.99,25,'ORIJEN Original Grain-Free Freeze-Dried Cat Treats', 1),
+ ('10004',24.21,2,'Catcus Cat Scratching Post', 1),
+ ('10005',64.99,1,'54-in Cat Scratching Tree', 1),
+ ('10006',31.71,2,'20-in Faux Fur Cat Tree', 1),
+ ('10007',15.07,4,'EZ Mount Cat Window Perch', 1),
+ ('10008',19.9, 2,'Rascador Cat Scratcher, Large',1),
+ ('10009',56.63,1,'Animal Series Cat Condo, Llama', 1),
+ ('10010',11.58,5,'Double-Sided Ceramic Elevated Cat Bowl',1),
+ ('10011',22.82,3,'Flower Plastic Cat Fountain', 1),
+ ('10012',5.86,4,'Coastal Fish Non-Skid Ceramic Cat Bowl', 1),
+ ('10013',11.45,3,'Pearl Pet Cafe Gravity Refill Dog & Cat Waterer', 1),
+ ('10014',9.28,3,'Catnip Yellow Banana Cat Toy', 1),
+ ('10015',5.14,20,'Mice Plush Cat Toy with Catnip', 1),
+ ('10016',10.23,6,'Butterfly Cat Tracks Cat Toy', 1),
+ ('10017',12.79,4,'Petstages Buggin Out Puzzle&Play Cat Toy', 1),
+ ('10018',6.99,20,'Nano Robotic Cat Toy', 1),
+ ('10019',11.35,3,'Colorful Peek-a-Boo Foldable Tri-Tunnel Cat Toy', 1),
+ ('10020',3.99,10,'SmartyKat Flutter Balls Feathery Cat Toy', 1),
+ ('10021',138.99,5,'Revolution Plus Topical Solution for Cats', 1),
+ ('10022',5.22,10,'Drontal Tablets for Cats&Kittens', 1),
+ ('10023',14.48,5,'Soft Beef&Filet Mignon Recipe Dog Treats', 2),
+ ('10024',49.98,5,'+Plus Adult High-Protein Healthy Weight Formula Dry Dog Food', 2),
+ ('10025',12.74,5,'Stainless Steel Personalized Dog&Cat ID Tag', 2);
+
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `items` ENABLE KEYS */;
+
+
+--
+-- Definition of table `petstore`.`orders`
+--
+
+DROP TABLE IF EXISTS `petstore`.`orders`;
+CREATE TABLE  `petstore`.`orders` (
+  `order_id` bigint(20) NOT NULL,
+  `time` datetime,
+  `item_id` bigint(20) NOT NULL,
+  `customer_num`  bigint(20) NOT NULL,
+  PRIMARY KEY  (`order_id`),
+  KEY `FK_pet_order_1` (`item_id`),
+  KEY `FK_pet_order_2` (`customer_num`),
+  CONSTRAINT `FK_pet_order_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`),
+  CONSTRAINT `FK_pet_order_2` FOREIGN KEY (`customer_num`) REFERENCES `customers` (`customer_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+INSERT INTO `petstore`.`orders` VALUES  
+ (1,'2023-01-01',10001,2),
+ (2,'2023-02-02',10023,4),
+ (3,'2023-03-03',10011,5),
+ (4,'2023-04-04',10002,6),
+ (5,'2023-05-05',10018,8),
+ (6,'2023-06-06',10016,7),
+ (7,'2023-07-07',10009,15),
+ (8,'2023-08-08',10008,13),
+ (9,'2023-09-09',10007,12),
+ (10,'2023-10-10',10002,10);
+
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,0 +1,25 @@
+<?php include 'header.php'; ?>
+<html>
+  <head>
+    <title>Welcome To Our Pet Store</title>
+    <h4> Dear Our Lovely Staff! We are Always So Proud of You ❤️ </h4>
+  </head>
+  <body>
+    <button onclick="window.location.href='staff_information.php'">Staff Information</button>
+    <br>
+    <button onclick="window.location.href='customer_information.php'">Customer Information</button>
+  	<br>
+    <button onclick="window.location.href='pet_adoption_status.php'">Pet Adoption Status</button>
+    <br>
+    <button onclick="window.location.href='staff_pet_items.php'">Update Pet Items</button>
+    <br>
+    <button onclick="window.location.href='staff_adopters.php'">Add Adopters</button>
+    <br>
+	<footer>
+		<div style="text-align:bottom;">
+			<a href="staff.txt">Contents of the PHP page</a>
+		</div>
+	</footer>
+    
+  </body>
+</html>
