@@ -29,7 +29,7 @@ $pet_id = mysqli_real_escape_string($conn, $pet_id);
 $query = "SELECT adopt_date, payment, customer_num,pet_id
 FROM adopters
 WHERE pet_id =";
-$query = $query."'".$pet_id."'";
+$query = $query."".$pet_id."";
 
 ?>
 
@@ -53,7 +53,7 @@ print "<pre>";
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
   {
     print "\n";
-    print "$row[firstName]  $row[lastName] $row[city]";
+    print "$row[adopt_date]  $row[payment] $row[customer_num] $row[pet_id]";
   }
 print "</pre>";
 
