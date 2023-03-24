@@ -29,7 +29,7 @@ $customer_num = mysqli_real_escape_string($conn, $customer_num);
 $query = "SELECT customer_num, fname, lname, phone, address
 FROM customers
 WHERE customer_num = ";
-$query = $query."'".$customer_num."'";
+$query = $query."".$customer_num."";
 
 ?>
 
@@ -53,7 +53,7 @@ print "<pre>";
 while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
   {
     print "\n";
-    print "$row[firstName]  $row[lastName] $row[city]";
+    print "$row[customer_num]  $row[fname] $row[lname] $row[phone] $row[address]";
   }
 print "</pre>";
 
