@@ -1,0 +1,11 @@
+pet_id,type_id,pet_name,age,check_id
+1001,1,nono,1,1
+1002,1,bobo,1,2
+1003,1,toto,2,3
+1004,1,lulu,3,4
+1005,1,lucky,5,5
+1006,1,mimi,5,6
+1007,2,lucy,6,7
+1008,2,max,3,8
+1009,2,cooper,3,9
+1010,2,charlie,3,10
